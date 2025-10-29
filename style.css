@@ -1,0 +1,60 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg,#6a11cb 0%,#2575fc 100%); color:#333; min-height:100vh; }
+
+/* Navbar */
+.navbar { position:fixed; top:0; left:0; width:100%; background:rgba(255,255,255,0.94); backdrop-filter: blur(8px); display:flex; justify-content:space-between; align-items:center; padding:12px 28px; box-shadow:0 4px 10px rgba(0,0,0,0.08); z-index:10; }
+.logo { font-size:1.6rem; font-weight:700; background:linear-gradient(90deg,#6a11cb,#2575fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: glow 3s infinite alternate; }
+@keyframes glow { from { text-shadow:0 0 5px #6a11cb } to { text-shadow:0 0 20px #2575fc } }
+.nav-links { list-style:none; display:flex; gap:22px; }
+.nav-links a { text-decoration:none; color:#333; font-weight:600; padding:6px 4px; border-radius:6px; transition: color .2s, background .15s; }
+.nav-links a:hover, .nav-links a.active { color:#fff; background: rgba(37,117,252,0.9); }
+
+/* Content */
+#app-content { margin-top:86px; padding:20px 28px; animation:fadeIn .45s ease; min-height:calc(100vh - 120px); }
+.fade { opacity:0; transition:opacity .35s ease; }
+.fade.show { opacity:1; }
+.page-title { font-size:2rem; margin-bottom:14px; color:#222; }
+
+/* Task Input */
+.task-input { display:flex; gap:10px; margin:18px 0; align-items:center; }
+.task-input input[type="text"], .task-input input[type="date"], .project-input input[type="text"] { flex:1; padding:10px; border-radius:8px; border:1px solid #ddd; background:#fff; }
+.task-input button, .project-input button { padding:10px 14px; border:none; border-radius:8px; background:#2575fc; color:#fff; cursor:pointer; transition:background .2s; }
+.task-input button:hover, .project-input button:hover { background:#1b5ed7; }
+
+/* Task List */
+ul { list-style:none; padding:0; }
+.task-item { display:flex; align-items:center; gap:12px; justify-content:space-between; background:#fff; padding:12px; margin-bottom:10px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.06); transition:transform .12s ease; }
+.task-item:hover { transform:translateY(-3px); }
+.task-left { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
+.task-left input[type="checkbox"] { transform:scale(1.15); }
+.task-left .text { flex:1; min-width:0; word-break:break-word; }
+.task-left .text[contenteditable="true"] { outline:none; cursor:text; }
+.task-meta { color:#666; font-size:0.9rem; margin-left:8px; }
+
+/* Completed */
+.task-item.completed .text { text-decoration:line-through; color:#888; font-style:italic; opacity:.9; }
+
+/* Delete */
+.delete-btn { background:#f44336; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; }
+.delete-btn:hover { background:#d32f2f; }
+
+/* Projects layout */
+.projects-layout { display:flex; gap:1.5rem; margin-top:1rem; }
+.project-panel { flex:1; background:linear-gradient(180deg,#fbfcff,#f5f7fb); border-radius:12px; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+.project-list { margin-top:10px; list-style:none; padding:0; }
+.project-item { display:flex; justify-content:space-between; align-items:center; padding:10px; border-radius:8px; background:#fff; border:1px solid #e6eefc; cursor:pointer; margin-bottom:8px; }
+.project-item .name { font-weight:600; }
+.project-item .count { font-size:.85rem; color:#666; }
+.project-tasks { flex:2; background:#fff; border-radius:12px; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06); min-height:220px; }
+
+/* Placeholder */
+.placeholder { color:#999; font-style:italic; }
+
+/* Small helpers */
+.small { font-size:.88rem; color:#666; }
+.row { display:flex; gap:8px; align-items:center; }
+
+/* Responsive */
+@media (max-width:900px) { .projects-layout { flex-direction:column; } .nav-links { gap:12px; } }
+@media (max-width:600px) { .navbar { padding:12px 16px; } #app-content { padding:16px; } .task-input, .project-input { flex-direction:column; } .task-input button, .project-input button { width:100%; } }
